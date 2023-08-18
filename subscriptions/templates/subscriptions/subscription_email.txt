@@ -10,3 +10,6 @@ Email: {{ email }}
 Telefone: {{ phone }}
 
 Em até 48h úteis alguem da nossa esquipe entrará em contato com você para conscluirmos a inscrição.
+
+Atenciosamente,
+Equipe EventIF

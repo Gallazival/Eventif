@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from contact.forms import contact_form
@@ -7,11 +8,11 @@ from django.template.loader import render_to_string
 
 def _enviar(assunto, de_, para, arquivo, conteudo):
     body = render_to_string(arquivo, conteudo)
-    mail.enviar(assunto, body, de_, [de_, para])
+    mail.send_mail(assunto, body, de_, [de_, para])
 
 def email(request):
     if request.method == 'POST':
-        form = ContactForms(request.POST)
+        form = contact_form(request.POST)
         if form.is_valid():
             _enviar('Confirmação de novo contato',
                 settings.DEFAULT_FROM_EMAIL, 

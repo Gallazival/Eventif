@@ -1,12 +1,15 @@
 from django.test import TestCase
 
-from subscriptions.forms import SubscriptionForm
+from contact.forms import contact_form
 
 
-class SubscriptionFormTest(TestCase):
+class test_contact_form(TestCase):
     def setUp(self):
-        self.form = SubscriptionForm()
+        self.form = contact_form()
+        self.response = self.client.get('/contato/')
 
-    def test_form_has_fields(self):
-        self.assertSequenceEqual(
-            ['name', 'cpf', 'email', 'phone'], list(self.form.fields))
+    def test_tem_campo(self):
+        self.assertListEqual(list(self.form.fields), ['nome', 'email', 'numero', 'mensagem'])
+   
+    def test_tem_csrf(self):
+        self.assertContains(self.response, 'csrfmiddlewaretoken')

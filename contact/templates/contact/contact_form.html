@@ -61,9 +61,9 @@
                     <form action="." novalidate method="post">
                         {% csrf_token %}
                         <div class="form-row label-block input-text">
-                            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-                            {{ form.name.errors }}
-                            {{ form.name }}
+                            <label for="{{ form.nome.id_for_label }}">{{ form.nome.label }}</label>
+                            {{ form.nome.errors }}
+                            {{ form.nome }}
                         </div>
                         <div class="form-row label-block input-text">
                             <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
@@ -71,14 +71,14 @@
                             {{ form.email }}
                         </div>
                         <div class="form-row label-block input-text">
-                            <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
-                            {{ form.phone.errors }}
-                            {{ form.phone }}
+                            <label for="{{ form.numero.id_for_label }}">{{ form.numero.label }}</label>
+                            {{ form.numero.errors }}
+                            {{ form.numero }}
                         </div>
                         <div class="form-row label-block input-text">
-                            <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
-                            {{ form.message.errors }}
-                            {{ form.message }}
+                            <label for="{{ form.mensagem.id_for_label }}">{{ form.mensagem.label }}</label>
+                            {{ form.mensagem.errors }}
+                            {{ form.mensagem }}
                         </div>
                         <p class="btn-row"><input type="submit" value="Enviar!"/></p>
                     </form>

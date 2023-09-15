@@ -20,7 +20,7 @@ def email(request):
                 'contact/contact_email.txt', 
                 form.cleaned_data)
 
-            messages.success(request, 'Inscrição realizada com sucesso!')
+            messages.success(request, 'Contato enviado com sucesso!')
             return HttpResponseRedirect("/contato/")
             
         else:

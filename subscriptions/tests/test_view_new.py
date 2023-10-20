@@ -1,12 +1,13 @@
 from django.core import mail
 from django.test import TestCase
-from subscriptions.models import Subscription
+from django.shortcuts import resolve_url as r
+
 from subscriptions.forms import SubscriptionForm
+from subscriptions.models import Subscription
 
-
-class SubscribeGet(TestCase):
+class SubscriptionsNewGet(TestCase):
     def setUp(self):
-        self.response = self.client.get('/inscricao/')
+        self.response = self.client.get(r('subscriptions:new'))
 
     def test_get(self):
         """GET /inscricao/ must return status_code 200"""
@@ -38,28 +39,27 @@ class SubscribeGet(TestCase):
         form = self.response.context["form"]
         self.assertIsInstance(form, SubscriptionForm)
 
-class SubscribePostValid(TestCase):
+class SubscriptionsNewPostValid(TestCase):
     def setUp(self):
-        data = dict(name="Enzo Hsu",
+        data = dict(name="Diego",
                     cpf="12345678901",
-                    email="enzo.hsu@aluno.riogrande.ifrs.edu.br",
-                    phone="53-99973-1504")
-        self.response = self.client.post('/inscricao/', data)
+                    email="diego.avila@aluno.riogrande.ifrs.edu.br",
+                    phone="53-99101-1002")
+        self.response = self.client.post(r('subscriptions:new'), data)
 
     def test_post(self):
-        self.assertEqual(302, self.response.status_code)
+        self.assertRedirects(self.response,  r('subscriptions:detail', 1))
 
     def test_send_subscribe_email(self):
         self.assertEqual(1, len(mail.outbox))
-
+        
     def test_save_subscription(self):
         self.assertTrue(Subscription.objects.exists())
 
 
-
-class SubscribePostInvalid(TestCase):
+class SubscriptionsNewPostInvalid(TestCase):
     def setUp(self):
-        self.response = self.client.post('/inscricao/', {})
+        self.response = self.client.post(r('subscriptions:new'), {})
 
     def test_post(self):
         self.assertEqual(200, self.response.status_code)
@@ -75,13 +75,6 @@ class SubscribePostInvalid(TestCase):
     def test_form_has_error(self):
         form = self.response.context['form']
         self.assertTrue(form.errors)
-
-    def test_dont_save_subscription(self):
+    
+    def test_dont_save_subsctiption(self):
         self.assertFalse(Subscription.objects.exists())
-
-class SubscribeSuccessMessage(TestCase):
-    def test_message(self):
-        data = dict(name="Enzo Hsu", cpf="12345678901",
-                    email="enzo.hsu@aluno.riogrande.ifrs.edu.br", phone="53-99973-1504")
-        response = self.client.post('/inscricao/', data, follow=True)
-        self.assertContains(response, 'Inscrição realizada com sucesso!')

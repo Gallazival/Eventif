@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 Django SECRET_KEY generator.
 """

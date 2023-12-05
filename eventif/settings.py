@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config, Csv
+
+from decouple import Csv, config
 from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,10 +41,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'test_without_migrations',
+    "test_without_migrations",
+    "django_extensions",
     "core",
-    "subscriptions",
-    "contact",
+    "subscriptions.apps.SubscriptionsConfig",
+    "contact"
 ]
 
 MIDDLEWARE = [
@@ -129,14 +131,12 @@ STATIC_ROOT = str(BASE_DIR / "staticfiles")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS',  cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSSWORD = config('EMAIL_HOST_PASSWORD')
-
+EMAIL_HOST_PASSWORD = config ('EMAIL_HOST_PASSWORD')
 
 TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'

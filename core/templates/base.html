@@ -21,10 +21,38 @@
         <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
 	</head>
 
+<<<<<<< HEAD
 	<body>
         <div class="header-frame row">
             {% include 'nav.html' only %}
         </div>
+=======
+    <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="header-frame row">
+        <header class="header header-inline min-h-3 row desktop-12 container" role="banner">
+
+            <div class="site-logo">
+                <h1><a href="{% url 'home' %}" rel="home">EventIF</h1>
+                <p class="site-description screen-reader-only">O maior encontro dos IFs do mundo!</p>
+            </div>
+
+            <nav class="nav-inline" role="navigation">
+                <a href="javascript:void(0);" class="nav-mobile"><i class="fa fa-bars"></i></a>
+                <ul>
+                    <li><a data-scroll href="{% url 'home' %}#overview">Conferência</a></li>
+                    <li><a data-scroll href="{% url 'home' %}cle#sponsors">Patrocinadores</a></li>
+                    <li><a data-scroll href="{% url 'home' %}#register">Inscrição</a></li>
+                    <li><a data-scroll href="{% url 'home' %}#venue">Local</a></li>
+                    <li><a data-scroll href="/contato/">Contato</a></li>
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+>>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f
 
 
         <!-- OVERVIEW -->

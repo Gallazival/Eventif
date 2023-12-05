@@ -7,9 +7,9 @@ from unittest.mock import Mock
 class SubscriptionModelAdminTest(TestCase):
     def setUp(self):
         Subscription.objects.create(
-            name="Cleber Fonseca",
+            name="Enzo Hsu",
             cpf="12345678901",
-            email="profcleberfonseca@gmail.com",
+            email="enzo.hsu@aluno.riogrande.ifrs.edu.br",
             phone="53912345678"
         )
 

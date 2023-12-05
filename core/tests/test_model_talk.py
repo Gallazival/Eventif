@@ -14,7 +14,7 @@ class TalkModelTest(TestCase):
 
     def test_has_speaker(self):
         self.talk.speakers.create(
-            name="Cleber Fonseca",
+            name="Enzo Hsu",
             slug='cleber-fonseca',
             website='https://cleberfonseca.com.br')
         

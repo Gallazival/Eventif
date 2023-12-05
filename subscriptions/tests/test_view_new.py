@@ -42,9 +42,9 @@ class SubscriptionsNewGet(TestCase):
 
 class SubscriptionsNewPostValid(TestCase):
     def setUp(self):
-        data = dict(name="Cleber Fonseca",
+        data = dict(name="Enzo Hsu",
                     cpf="12345678901",
-                    email="profcleberfonseca@gmail.com",
+                    email="enzo.hsu@aluno.riogrande.ifrs.edu.br",
                     phone="53-91234-5678")
 
         self.response = self.client.post(r('subscriptions:new'), data)
@@ -84,6 +84,6 @@ class SubscriptionsNewPostInvalid(TestCase):
 
 class TemplateRegressionTest(TestCase):
     def test_template_has_nonfield_errors(self):
-        invalid_data = dict(name='Cleber Fonseca', cpf='12345678901')
+        invalid_data = dict(name='Enzo Hsu', cpf='12345678901')
         response = self.client.post(r('subscriptions:new'), invalid_data)
         self.assertContains(response, '<ul class="errorlist nonfield">')

@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 class ContactSpeakerModelTest(TestCase):
     def setUp(self):
         self.speaker = Speaker.objects.create(
-            name="Cleber Fonseca",
+            name="Enzo Hsu",
             slug="cleber-fonseca",
             photo="https://cleberfonseca.com.br/img/perfil.png"
         )
@@ -15,7 +15,7 @@ class ContactSpeakerModelTest(TestCase):
         contact = ContactSpeaker.objects.create(
             speaker=self.speaker,
             kind=ContactSpeaker.EMAIL,
-            value='profcleberfonseca@gmail.com'
+            value='enzo.hsu@aluno.riogrande.ifrs.edu.br'
         )
         self.assertTrue(ContactSpeaker.objects.exists())
 
@@ -39,6 +39,6 @@ class ContactSpeakerModelTest(TestCase):
         contact = ContactSpeaker(
             speaker=self.speaker,
             kind=ContactSpeaker.EMAIL,
-            value='profcleberfonseca@gmail.com'
+            value='enzo.hsu@aluno.riogrande.ifrs.edu.br'
         )
-        self.assertEqual('profcleberfonseca@gmail.com', str(contact))
+        self.assertEqual('enzo.hsu@aluno.riogrande.ifrs.edu.br', str(contact))

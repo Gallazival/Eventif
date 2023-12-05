@@ -5,9 +5,9 @@ from django.shortcuts import resolve_url as r
 
 class MailTest(TestCase):
     def setUp(self):
-        data = dict(name="Cleber Fonseca",
+        data = dict(name="Enzo Hsu",
                     cpf="12345678901",
-                    email="profcleberfonseca@gmail.com",
+                    email="enzo.hsu@aluno.riogrande.ifrs.edu.br",
                     phone="53-91234-5678")
 
         self.response = self.client.post(r('subscriptions:new'), data)
@@ -22,13 +22,13 @@ class MailTest(TestCase):
         self.assertEqual(expect, self.email.from_email)
 
     def test_subscription_email_to(self):
-        expect = ['contato@eventif.com.br', 'profcleberfonseca@gmail.com']
+        expect = ['contato@eventif.com.br', 'enzo.hsu@aluno.riogrande.ifrs.edu.br']
         self.assertEqual(expect, self.email.to)
 
     def test_subscription_email_body(self):
-        contents = ['Cleber Fonseca',
+        contents = ['Enzo Hsu',
                     '12345678901',
-                    'profcleberfonseca@gmail.com',
+                    'enzo.hsu@aluno.riogrande.ifrs.edu.br',
                     '53-91234-5678']
         for content in contents:
             with self.subTest():

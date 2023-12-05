@@ -13,7 +13,7 @@ class TalkListGet(TestCase):
             title = 'Título da Palestra',
             start = '13:00',
             description = 'Descrição da palestra.')
-        speaker = Speaker.objects.create(name="Cleber Fonseca", slug='cleber-fonseca', website='https://cleberfonseca.com.br')
+        speaker = Speaker.objects.create(name="Enzo Hsu", slug='cleber-fonseca', website='https://cleberfonseca.com.br')
         t1.speakers.add(speaker)
         t2.speakers.add(speaker)
         self.response = self.client.get(r('talk_list'))
@@ -30,7 +30,7 @@ class TalkListGet(TestCase):
             (1, '10:00'),
             (1, '13:00'),
             (2, '/palestrantes/cleber-fonseca/'),
-            (2, 'Cleber Fonseca'),
+            (2, 'Enzo Hsu'),
             (2, 'Descrição da palestra.')
         ]
         for count, expected in content:

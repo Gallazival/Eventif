@@ -7,9 +7,9 @@ from subscriptions.models import Subscription
 class SubscriptionDetailGet(TestCase):
     def setUp(self):
         self.obj = Subscription.objects.create(
-            name='Cleber Fonseca',
+            name='Enzo Hsu',
             cpf='12345678901',
-            email='profcleberfonseca@gmail.com',
+            email='enzo.hsu@aluno.riogrande.ifrs.edu.br',
             phone='53-912345678'
         )
         self.resp = self.client.get(r('subscriptions:detail', self.obj.pk))

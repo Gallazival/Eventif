@@ -12,7 +12,6 @@ from subscriptions.models import Subscription
 def new(request):
     if request.method == 'POST':
         return create(request)
-<<<<<<< HEAD
 
     return empty_form(request)
 
@@ -20,20 +19,12 @@ def new(request):
 def empty_form(request):
     return render(request, 'subscriptions/subscription_form.html', {"form": SubscriptionForm()})
 
-=======
-    
-    return empty_form(request)
-
-def empty_form(request):
-    return render(request, 'subscriptions/subscription_form.html', {'form': SubscriptionForm()})
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f
 
 def create(request):
     form = SubscriptionForm(request.POST)
 
     if not form.is_valid():
         return render(request, 'subscriptions/subscription_form.html', {'form': form})
-<<<<<<< HEAD
 
     sub = form.save()
 
@@ -46,19 +37,6 @@ def create(request):
     return HttpResponseRedirect(r('subscriptions:detail', sub.pk))
 
 
-=======
-    
-    sub = Subscription.objects.create(**form.cleaned_data)
-
-    _send_mail('Confirmação de inscrição',
-               settings.DEFAULT_FROM_EMAIL, 
-               form.cleaned_data['email'], 
-               'subscriptions/subscription_email.txt', 
-               {'subscription': sub})
-               
-    return HttpResponseRedirect(r('subscriptions:detail', sub.pk))
-
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f
 def detail(request, pk):
     try:
         sub = Subscription.objects.get(pk=pk)

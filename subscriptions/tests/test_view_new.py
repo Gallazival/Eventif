@@ -5,10 +5,7 @@ from django.shortcuts import resolve_url as r
 from subscriptions.forms import SubscriptionForm
 from subscriptions.models import Subscription
 
-<<<<<<< HEAD
 
-=======
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f
 class SubscriptionsNewGet(TestCase):
     def setUp(self):
         self.response = self.client.get(r('subscriptions:new'))
@@ -42,7 +39,6 @@ class SubscriptionsNewGet(TestCase):
         form = self.response.context["form"]
         self.assertIsInstance(form, SubscriptionForm)
 
-<<<<<<< HEAD
 
 class SubscriptionsNewPostValid(TestCase):
     def setUp(self):
@@ -55,22 +51,10 @@ class SubscriptionsNewPostValid(TestCase):
 
     def test_post(self):
         self.assertRedirects(self.response, r('subscriptions:detail', 1))
-=======
-class SubscriptionsNewPostValid(TestCase):
-    def setUp(self):
-        data = dict(name="Diego",
-                    cpf="12345678901",
-                    email="diego.avila@aluno.riogrande.ifrs.edu.br",
-                    phone="53-99101-1002")
-        self.response = self.client.post(r('subscriptions:new'), data)
-
-    def test_post(self):
-        self.assertRedirects(self.response,  r('subscriptions:detail', 1))
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f
 
     def test_send_subscribe_email(self):
         self.assertEqual(1, len(mail.outbox))
-        
+
     def test_save_subscription(self):
         self.assertTrue(Subscription.objects.exists())
 
@@ -93,7 +77,6 @@ class SubscriptionsNewPostInvalid(TestCase):
     def test_form_has_error(self):
         form = self.response.context['form']
         self.assertTrue(form.errors)
-<<<<<<< HEAD
 
     def test_dont_save_subscription(self):
         self.assertFalse(Subscription.objects.exists())
@@ -104,8 +87,3 @@ class TemplateRegressionTest(TestCase):
         invalid_data = dict(name='Cleber Fonseca', cpf='12345678901')
         response = self.client.post(r('subscriptions:new'), invalid_data)
         self.assertContains(response, '<ul class="errorlist nonfield">')
-=======
-    
-    def test_dont_save_subsctiption(self):
-        self.assertFalse(Subscription.objects.exists())
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f

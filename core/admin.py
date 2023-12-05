@@ -1,18 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
-<<<<<<< HEAD
 from core.models import Speaker, ContactSpeaker, Talk
 
 
-=======
-from core.models import Speaker, ContactSpeaker
-
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f
 class ContactInline(admin.TabularInline):
     model = ContactSpeaker
     extra = 1
 
-<<<<<<< HEAD
 
 class SpeakerModelAdmin(admin.ModelAdmin):
     inlines = [ContactInline]
@@ -32,8 +26,3 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Speaker, SpeakerModelAdmin)
 admin.site.register(Talk)
-=======
-class SpeakerModelAdmin(admin.ModelAdmin):
-    inline = [ContactInline]
-# Register your models here.
->>>>>>> aabad51da67e85a9357f4b8a22d660461fddae1f

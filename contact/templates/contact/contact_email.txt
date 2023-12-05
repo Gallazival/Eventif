@@ -1,10 +1,10 @@
-Novo contato recebido de {{ nome }}.
+Novo contato recebido de {{ name }}.
 
-Telefone: {{ numero }}
+Telefone: {{ phone }}
 Email: {{ email }}
 
 Mensagem:
-{{ mensagem }}
+{{ message }}
 
 ---------
 Em até 48 horas úteis alguem da nossa equipe responderá o seu contato.

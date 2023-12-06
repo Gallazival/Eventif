@@ -25,6 +25,6 @@ urlpatterns = [
     path('inscricao/', include('subscriptions.urls')),
     path('palestrantes/<slug:slug>/', speaker_detail, name='speaker_detail'),
     path('palestras/', talk_list, name='talk_list'),
-    path('contact/', email),
+    path('contato/', email),
     path('admin/', admin.site.urls),
 ]

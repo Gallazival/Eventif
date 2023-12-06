@@ -8,7 +8,7 @@ class teste_email(TestCase):
                 'email' : "enzo.hsu@aluno.riogrande.ifrs.edu.br",
                 'numero' : "53-99973-1504", 
                 'mensagem' : "Funcionou!"}
-        self.response = self.client.post('/contato/', data)
+        self.response = self.client.post('/contact/', data)
         self.email = mail.outbox[0]
 
     def test_assunto_email(self):

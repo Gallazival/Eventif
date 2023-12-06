@@ -4,7 +4,7 @@ from contact.forms import contact_form
 
 class teste_get(TestCase):
     def setUp(self):
-        self.response = self.client.get('/contato/')
+        self.response = self.client.get('/contact/')
 
     def test_get(self):
         self.assertEqual(self.response.status_code, 200)
@@ -36,7 +36,7 @@ class teste_post_e_valido(TestCase):
                 'email' : "enzo.hsu@aluno.riogrande.ifrs.edu.br",
                 'numero' : "53-99973-1504",
                 'mensagem' : "Funcionou!"}
-        self.response = self.client.post('/contato/', data)
+        self.response = self.client.post('/contact/', data)
 
     def test_post(self):
         self.assertEqual(self.response.status_code, 302)
@@ -47,7 +47,7 @@ class teste_post_e_valido(TestCase):
 
 class teste_post_e_invalido(TestCase):
     def setUp(self):
-        self.response = self.client.post('/contato/', {})
+        self.response = self.client.post('/contact/', {})
 
     def test_post(self):
         self.assertEqual(self.response.status_code, 200)

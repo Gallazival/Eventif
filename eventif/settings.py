@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'core',
     'subscriptions.apps.SubscriptionsConfig',
-    'contacts',
+    'contact',
 ]
 
 MIDDLEWARE = [
